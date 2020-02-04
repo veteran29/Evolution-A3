@@ -407,7 +407,7 @@ switch (typeOf _unit) do {
 	};
 };
 _unit setRank "PRIVATE";
-_unit = _this select 0;
+
 _unit addEventHandler ["HandleScore", {
 		_ai = _this select 0;
 		_source = _this select 1;
