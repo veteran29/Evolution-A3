@@ -45,16 +45,13 @@ if ( _dis > 1000) then {
 
 	[_pilot, format["Grid %3 confirmed, en route, over.", groupID (group _caller), groupID (group _pilot), mapGridPosition _pos]] call EVO_fnc_globalSideChat;
 	sleep 3.5;
-		_logic = "Logic" createVehicleLocal _pos;
-		_logic setDir (random 360);
-		_logic setVariable ["vehicle", _planeClass];
-		_logic setVariable ["type", 2];
-		[_logic,nil,true] call BIS_fnc_moduleCAS;
-		deleteVehicle _logic;
-		_loop = true;
-	};
-};
-
+	_logic = "Logic" createVehicleLocal _pos;
+	_logic setDir (random 360);
+	_logic setVariable ["vehicle", _planeClass];
+	_logic setVariable ["type", 2];
+	[_logic,nil,true] call BIS_fnc_moduleCAS;
+	deleteVehicle _logic;
+	_loop = true;
 } else {
 	[_pilot, format["Grid %3 is too close to friendly forces, request denied, out.", groupID (group _caller), groupID (group _pilot), mapGridPosition _pos]] call EVO_fnc_globalSideChat;
 	sleep 5;

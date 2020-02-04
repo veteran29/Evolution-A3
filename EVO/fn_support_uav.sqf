@@ -9,12 +9,15 @@ _ID = _this select 4;
 _grpSide = side _caller;
 _uav = uav_west;
 _busy = _uav getVariable ["EVO_support_busy", false];
+
 if (_busy) exitWith {
 	[_caller, format["Crossroads, this is %1, requesting UAV support, over.", groupID (group _caller)]] call EVO_fnc_globalSideChat;
 	sleep 3.5;
 	[Crossroads, format["%1, this is Crossroads, UAV is unavailable, out.", groupID (group _caller)]] call EVO_fnc_globalSideChat;
-}
+};
+
 _grp = group _caller;
+
 [_caller, -10] call bis_fnc_addScore;
 ["PointsRemoved",["UAV request initiated.", 10]] call BIS_fnc_showNotification;
 if (!("B_UavTerminal" in (assignedItems _caller))) exitWith {
